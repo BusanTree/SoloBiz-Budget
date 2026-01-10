@@ -79,7 +79,10 @@ const translations = {
         contact_desc: "궁금한 점이나 제휴 제안이 있으시면 아래 폼을 통해 연락주세요.",
         label_email: "이메일",
         label_message: "문의 내용",
-        btn_send: "보내기"
+        btn_send: "보내기",
+        nav_feedback: "피드백",
+        feedback_title: "사용자 피드백",
+        feedback_desc: "서비스에 대한 의견을 자유롭게 남겨주세요."
     },
     en: {
         nav_dashboard: "Dashboard",
@@ -87,6 +90,7 @@ const translations = {
         nav_goals: "Goals",
         nav_fixed: "Fixed Expenses",
         nav_contact: "Contact",
+        nav_feedback: "Feedback",
         nav_settings: "Settings",
         dashboard_title: "Dashboard",
         greeting_prefix: "Hello, ",
@@ -160,7 +164,9 @@ const translations = {
         contact_desc: "If you have any questions or partnership proposals, please contact us via the form below.",
         label_email: "Email",
         label_message: "Message",
-        btn_send: "Send"
+        btn_send: "Send",
+        feedback_title: "User Feedback",
+        feedback_desc: "Please leave your feedback about our service."
     },
     ja: {
         nav_dashboard: "ダッシュボード",
@@ -168,6 +174,7 @@ const translations = {
         nav_goals: "目標設定",
         nav_fixed: "固定費",
         nav_contact: "お問い合わせ",
+        nav_feedback: "フィードバック",
         nav_settings: "設定",
         dashboard_title: "ダッシュボード",
         greeting_prefix: "こんにちは、",
@@ -241,7 +248,9 @@ const translations = {
         contact_desc: "ご質問や提携のご提案がございましたら、以下のフォームよりご連絡ください。",
         label_email: "メールアドレス",
         label_message: "お問い合わせ内容",
-        btn_send: "送信"
+        btn_send: "送信",
+        feedback_title: "ユーザーフィードバック",
+        feedback_desc: "サービスに関するご意見をご自由にお書きください。"
     },
     zh: {
         nav_dashboard: "仪表板",
@@ -249,6 +258,7 @@ const translations = {
         nav_goals: "目标设定",
         nav_fixed: "固定支出",
         nav_contact: "联系我们",
+        nav_feedback: "反馈",
         nav_settings: "设置",
         dashboard_title: "仪表板",
         greeting_prefix: "你好，",
@@ -322,7 +332,9 @@ const translations = {
         contact_desc: "如有任何疑问或合作建议，请通过以下表单联系我们。",
         label_email: "电子邮件",
         label_message: "留言内容",
-        btn_send: "发送"
+        btn_send: "发送",
+        feedback_title: "用户反馈",
+        feedback_desc: "请留下您对服务的宝贵意见。"
     },
     es: {
         nav_dashboard: "Panel",
@@ -330,6 +342,7 @@ const translations = {
         nav_goals: "Metas",
         nav_fixed: "Gastos Fijos",
         nav_contact: "Contacto",
+        nav_feedback: "Comentarios",
         nav_settings: "Ajustes",
         dashboard_title: "Panel",
         greeting_prefix: "Hola, ",
@@ -403,7 +416,9 @@ const translations = {
         contact_desc: "Si tiene alguna pregunta o propuesta de asociación, contáctenos a través del formulario a continuación.",
         label_email: "Correo electrónico",
         label_message: "Mensaje",
-        btn_send: "Enviar"
+        btn_send: "Enviar",
+        feedback_title: "Comentarios del Usuario",
+        feedback_desc: "No dude en dejar sus comentarios sobre el servicio."
     },
     fr: {
         nav_dashboard: "Tableau de bord",
@@ -411,6 +426,7 @@ const translations = {
         nav_goals: "Objectifs",
         nav_fixed: "Dépenses Fixes",
         nav_contact: "Contact",
+        nav_feedback: "Commentaires",
         nav_settings: "Paramètres",
         dashboard_title: "Tableau de bord",
         greeting_prefix: "Bonjour, ",
@@ -484,7 +500,9 @@ const translations = {
         contact_desc: "Si vous avez des questions ou des propositions de partenariat, veuillez nous contacter via le formulaire ci-dessous.",
         label_email: "Email",
         label_message: "Message",
-        btn_send: "Envoyer"
+        btn_send: "Envoyer",
+        feedback_title: "Commentaires des Utilisateurs",
+        feedback_desc: "N'hésitez pas à laisser vos commentaires sur le service."
     },
     de: {
         nav_dashboard: "Dashboard",
@@ -492,6 +510,7 @@ const translations = {
         nav_goals: "Ziele",
         nav_fixed: "Fixkosten",
         nav_contact: "Kontakt",
+        nav_feedback: "Feedback",
         nav_settings: "Einstellungen",
         dashboard_title: "Dashboard",
         greeting_prefix: "Hallo, ",
@@ -565,7 +584,9 @@ const translations = {
         contact_desc: "Wenn Sie Fragen oder Partnerschaftsvorschläge haben, kontaktieren Sie uns bitte über das untenstehende Formular.",
         label_email: "E-Mail",
         label_message: "Nachricht",
-        btn_send: "Senden"
+        btn_send: "Senden",
+        feedback_title: "Benutzer-Feedback",
+        feedback_desc: "Bitte hinterlassen Sie Ihr Feedback zu unserem Service."
     }
 };
 
