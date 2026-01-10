@@ -82,7 +82,13 @@ const translations = {
         btn_send: "보내기",
         nav_feedback: "피드백",
         feedback_title: "사용자 피드백",
-        feedback_desc: "서비스에 대한 의견을 자유롭게 남겨주세요."
+        feedback_desc: "서비스에 대한 의견을 자유롭게 남겨주세요.",
+        nav_about: "소개",
+        nav_privacy: "개인정보처리방침",
+        nav_terms: "이용약관",
+        about_title: "SoloBiz 소개",
+        privacy_title: "개인정보처리방침",
+        terms_title: "이용약관"
     },
     en: {
         nav_dashboard: "Dashboard",
@@ -166,7 +172,13 @@ const translations = {
         label_message: "Message",
         btn_send: "Send",
         feedback_title: "User Feedback",
-        feedback_desc: "Please leave your feedback about our service."
+        feedback_desc: "Please leave your feedback about our service.",
+        nav_about: "About",
+        nav_privacy: "Privacy Policy",
+        nav_terms: "Terms of Service",
+        about_title: "About SoloBiz",
+        privacy_title: "Privacy Policy",
+        terms_title: "Terms of Service"
     },
     ja: {
         nav_dashboard: "ダッシュボード",
@@ -250,7 +262,13 @@ const translations = {
         label_message: "お問い合わせ内容",
         btn_send: "送信",
         feedback_title: "ユーザーフィードバック",
-        feedback_desc: "サービスに関するご意見をご自由にお書きください。"
+        feedback_desc: "サービスに関するご意見をご自由にお書きください。",
+        nav_about: "紹介",
+        nav_privacy: "プライバシーポリシー",
+        nav_terms: "利用規約",
+        about_title: "SoloBizについて",
+        privacy_title: "プライバシーポリシー",
+        terms_title: "利用規約"
     },
     zh: {
         nav_dashboard: "仪表板",
@@ -334,7 +352,13 @@ const translations = {
         label_message: "留言内容",
         btn_send: "发送",
         feedback_title: "用户反馈",
-        feedback_desc: "请留下您对服务的宝贵意见。"
+        feedback_desc: "请留下您对服务的宝贵意见。",
+        nav_about: "关于我们",
+        nav_privacy: "隐私政策",
+        nav_terms: "使用条款",
+        about_title: "关于SoloBiz",
+        privacy_title: "隐私政策",
+        terms_title: "使用条款"
     },
     es: {
         nav_dashboard: "Panel",
@@ -418,7 +442,13 @@ const translations = {
         label_message: "Mensaje",
         btn_send: "Enviar",
         feedback_title: "Comentarios del Usuario",
-        feedback_desc: "No dude en dejar sus comentarios sobre el servicio."
+        feedback_desc: "No dude en dejar sus comentarios sobre el servicio.",
+        nav_about: "Acerca de",
+        nav_privacy: "Política de Privacidad",
+        nav_terms: "Términos de Servicio",
+        about_title: "Acerca de SoloBiz",
+        privacy_title: "Política de Privacidad",
+        terms_title: "Términos de Servicio"
     },
     fr: {
         nav_dashboard: "Tableau de bord",
@@ -502,7 +532,13 @@ const translations = {
         label_message: "Message",
         btn_send: "Envoyer",
         feedback_title: "Commentaires des Utilisateurs",
-        feedback_desc: "N'hésitez pas à laisser vos commentaires sur le service."
+        feedback_desc: "N'hésitez pas à laisser vos commentaires sur le service.",
+        nav_about: "À propos",
+        nav_privacy: "Politique de Confidentialité",
+        nav_terms: "Conditions d'Utilisation",
+        about_title: "À propos de SoloBiz",
+        privacy_title: "Politique de Confidentialité",
+        terms_title: "Conditions d'Utilisation"
     },
     de: {
         nav_dashboard: "Dashboard",
@@ -586,7 +622,13 @@ const translations = {
         label_message: "Nachricht",
         btn_send: "Senden",
         feedback_title: "Benutzer-Feedback",
-        feedback_desc: "Bitte hinterlassen Sie Ihr Feedback zu unserem Service."
+        feedback_desc: "Bitte hinterlassen Sie Ihr Feedback zu unserem Service.",
+        nav_about: "Über uns",
+        nav_privacy: "Datenschutzrichtlinie",
+        nav_terms: "Nutzungsbedingungen",
+        about_title: "Über SoloBiz",
+        privacy_title: "Datenschutzrichtlinie",
+        terms_title: "Nutzungsbedingungen"
     }
 };
 
