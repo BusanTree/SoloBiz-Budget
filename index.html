@@ -24,9 +24,13 @@
 <body>
     <!-- Auth Overlay -->
     <div id="auth-overlay"
-        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); z-index: 9999; display: flex; align-items: center; justify-content: center;">
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); z-index: 9999; display: none; align-items: center; justify-content: center;">
         <div
-            style="background: rgba(30, 41, 59, 0.95); border: 1px solid var(--glass-border); border-radius: 24px; padding: 3rem; width: 90%; max-width: 450px; backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
+            style="background: rgba(30, 41, 59, 0.95); border: 1px solid var(--glass-border); border-radius: 24px; padding: 3rem; width: 90%; max-width: 450px; backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); position: relative;">
+            <button onclick="hideAuthOverlay()"
+                style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.2rem;">
+                <i class="fa-solid fa-times"></i>
+            </button>
             <!-- Logo -->
             <div style="text-align: center; margin-bottom: 2rem;">
                 <i class="fa-solid fa-rocket" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
@@ -150,9 +154,9 @@
             </ul>
             <div class="sidebar-footer"
                 style="margin-top: auto; padding: 1rem; border-top: 1px solid var(--glass-border);">
-                <!-- User Info -->
+                <!-- User Info (Hidden by default) -->
                 <div id="user-info"
-                    style="margin-bottom: 1rem; padding: 0.75rem; background: rgba(99, 102, 241, 0.1); border-radius: 8px;">
+                    style="display: none; margin-bottom: 1rem; padding: 0.75rem; background: rgba(99, 102, 241, 0.1); border-radius: 8px;">
                     <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
                         <i class="fa-solid fa-user-circle"
                             style="font-size: 1.5rem; color: var(--primary); margin-right: 0.5rem;"></i>
@@ -165,6 +169,14 @@
                     <button id="logout-btn"
                         style="width: 100%; padding: 0.5rem; background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s;">
                         <i class="fa-solid fa-right-from-bracket"></i> 로그아웃
+                    </button>
+                </div>
+
+                <!-- Guest Login Button (Visible by default) -->
+                <div id="guest-login-btn" style="margin-bottom: 1rem;">
+                    <button onclick="showAuthOverlay()"
+                        style="width: 100%; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.3s;">
+                        <i class="fa-solid fa-right-to-bracket"></i> 로그인 / 회원가입
                     </button>
                 </div>
                 <div style="font-size: 0.85rem; color: var(--text-muted);">

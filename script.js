@@ -81,8 +81,7 @@ async function handleSignup() {
             showLogin();
         } else {
             currentUser = loginData.user;
-            document.getElementById('user-email').textContent = currentUser.email;
-            hideAuthOverlay();
+            updateAuthUI();
             await loadUserData();
         }
     } catch (error) {
@@ -107,10 +106,7 @@ async function handleLogin() {
         if (error) throw error;
 
         currentUser = data.user;
-        document.getElementById('user-email').textContent = currentUser.email;
-        hideAuthOverlay();
-
-        // Load user data
+        updateAuthUI();
         await loadUserData();
     } catch (error) {
         console.error('Login error:', error);
@@ -125,12 +121,13 @@ async function handleLogout() {
         if (error) throw error;
 
         currentUser = null;
-        showAuthOverlay();
+        updateAuthUI();
 
         // Clear local data
         transactions = [];
         goals = [];
         departments = [];
+        init(); // Re-init to refresh views if needed
     } catch (error) {
         console.error('Logout error:', error);
         alert('로그아웃 실패: ' + error.message);
@@ -139,15 +136,39 @@ async function handleLogout() {
 
 // Check Auth State
 async function checkAuth() {
-    const { data: { session } } = await window.supabaseClient.auth.getSession();
+    try {
+        const { data: { session } } = await window.supabaseClient.auth.getSession();
 
-    if (session) {
-        currentUser = session.user;
-        document.getElementById('user-email').textContent = currentUser.email;
+        if (session) {
+            currentUser = session.user;
+            await loadUserData();
+        } else {
+            currentUser = null;
+        }
+    } catch (error) {
+        console.error('Auth check error:', error);
+        currentUser = null;
+    }
+    updateAuthUI();
+}
+
+function updateAuthUI() {
+    const userInfo = document.getElementById('user-info');
+    const guestLoginBtn = document.getElementById('guest-login-btn');
+
+    if (currentUser) {
+        // Logged in
+        if (userInfo) userInfo.style.display = 'block';
+        if (guestLoginBtn) guestLoginBtn.style.display = 'none';
+
+        const emailEl = document.getElementById('user-email');
+        if (emailEl) emailEl.textContent = currentUser.email;
+
         hideAuthOverlay();
-        await loadUserData();
     } else {
-        showAuthOverlay();
+        // Guest / Not logged in
+        if (userInfo) userInfo.style.display = 'none';
+        if (guestLoginBtn) guestLoginBtn.style.display = 'block';
     }
 }
 
