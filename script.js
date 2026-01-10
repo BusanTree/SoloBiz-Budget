@@ -2013,6 +2013,12 @@ function displayAnimalResult(animal, percentage) {
     document.getElementById('animal-description').textContent = animal[descKey] || animal.desc_ko;
 }
 
+// Initialize app
+function init() {
+    // Placeholder for initialization
+    console.log('App initialized');
+}
+
 // Start
 init();
 
