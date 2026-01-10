@@ -2,7 +2,6 @@
 const SUPABASE_URL = 'https://cgfihyaroktousyuzptz.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNnZmloeWFyb2t0b3VzeXV6cHR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgwMzY1MzEsImV4cCI6MjA4MzYxMjUzMX0.o_7A-3IbO9C_K8df1EoSxAdUfZkQ3iOGVBNejUH2ekw';
 
-let supabase; // Will be initialized in init()
 
 // Current user
 let currentUser = null;
@@ -55,7 +54,7 @@ async function handleSignup() {
     showAuthLoading();
 
     try {
-        const { data, error } = await supabase.auth.signUp({
+        const { data, error } = await window.supabaseClient.auth.signUp({
             email: email,
             password: password,
             options: {
@@ -72,7 +71,7 @@ async function handleSignup() {
         alert('회원가입이 완료되었습니다! 자동 로그인됩니다.');
 
         // Try to login immediately
-        const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
+        const { data: loginData, error: loginError } = await window.supabaseClient.auth.signInWithPassword({
             email: email,
             password: password
         });
@@ -100,7 +99,7 @@ async function handleLogin() {
     showAuthLoading();
 
     try {
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await window.supabaseClient.auth.signInWithPassword({
             email: email,
             password: password
         });
@@ -122,7 +121,7 @@ async function handleLogin() {
 
 async function handleLogout() {
     try {
-        const { error } = await supabase.auth.signOut();
+        const { error } = await window.supabaseClient.auth.signOut();
         if (error) throw error;
 
         currentUser = null;
@@ -140,7 +139,7 @@ async function handleLogout() {
 
 // Check Auth State
 async function checkAuth() {
-    const { data: { session } } = await supabase.auth.getSession();
+    const { data: { session } } = await window.supabaseClient.auth.getSession();
 
     if (session) {
         currentUser = session.user;
@@ -2034,8 +2033,10 @@ function displayAnimalResult(animal, percentage) {
 function init() {
     // Initialize Supabase client
     if (window.supabase) {
-        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-        console.log('Supabase initialized');
+        if (!window.supabaseClient) {
+            window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            console.log('Supabase initialized');
+        }
     } else {
         console.error('Supabase library not loaded!');
         return;
