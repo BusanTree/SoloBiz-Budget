@@ -2,7 +2,7 @@
 const SUPABASE_URL = 'https://cgfihyaroktousyuzptz.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNnZmloeWFyb2t0b3VzeXV6cHR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgwMzY1MzEsImV4cCI6MjA4MzYxMjUzMX0.o_7A-3IbO9C_K8df1EoSxAdUfZkQ3iOGVBNejUH2ekw';
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let supabase; // Will be initialized in init()
 
 // Current user
 let currentUser = null;
@@ -2032,7 +2032,15 @@ function displayAnimalResult(animal, percentage) {
 
 // Initialize app
 function init() {
-    // Placeholder for initialization
+    // Initialize Supabase client
+    if (window.supabase) {
+        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        console.log('Supabase initialized');
+    } else {
+        console.error('Supabase library not loaded!');
+        return;
+    }
+
     console.log('App initialized');
 
     // Attach event listeners
