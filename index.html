@@ -122,7 +122,8 @@
     <div class="app-container">
         <!-- Sidebar / Navigation -->
         <aside class="sidebar">
-            <div class="logo">
+            <div class="logo" onclick="document.querySelector('[data-target=\'dashboard-view\']').click()"
+                style="cursor: pointer;">
                 <i class="fa-solid fa-rocket"></i>
                 <span>SoloBiz</span>
             </div>
@@ -155,30 +156,7 @@
             <div class="sidebar-footer"
                 style="margin-top: auto; padding: 1rem; border-top: 1px solid var(--glass-border);">
                 <!-- User Info (Hidden by default) -->
-                <div id="user-info"
-                    style="display: none; margin-bottom: 1rem; padding: 0.75rem; background: rgba(99, 102, 241, 0.1); border-radius: 8px;">
-                    <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
-                        <i class="fa-solid fa-user-circle"
-                            style="font-size: 1.5rem; color: var(--primary); margin-right: 0.5rem;"></i>
-                        <div style="flex: 1; min-width: 0;">
-                            <div id="user-email"
-                                style="font-size: 0.85rem; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                Loading...</div>
-                        </div>
-                    </div>
-                    <button id="logout-btn"
-                        style="width: 100%; padding: 0.5rem; background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s;">
-                        <i class="fa-solid fa-right-from-bracket"></i> 로그아웃
-                    </button>
-                </div>
-
-                <!-- Guest Login Button (Visible by default) -->
-                <div id="guest-login-btn" style="margin-bottom: 1rem;">
-                    <button onclick="showAuthOverlay()"
-                        style="width: 100%; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.3s;">
-                        <i class="fa-solid fa-right-to-bracket"></i> 로그인 / 회원가입
-                    </button>
-                </div>
+                <!-- Auth buttons moved to Top Bar -->
                 <div style="font-size: 0.85rem; color: var(--text-muted);">
                     <div style="margin-bottom: 0.5rem;">
                         <a href="#" data-target="about-view"
@@ -206,9 +184,32 @@
         <main class="main-content">
             <header class="top-bar">
                 <h1 id="page-title" data-i18n="dashboard_title">대시보드</h1>
-                <div class="user-profile">
-                    <span id="user-name-display">안녕하세요, 사장님!</span>
-                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                <div class="user-profile" style="display: flex; align-items: center; gap: 1rem;">
+
+                    <!-- Guest Login Button -->
+                    <div id="guest-login-btn">
+                        <button onclick="showAuthOverlay()"
+                            style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.3s; font-size: 0.9rem;">
+                            <i class="fa-solid fa-right-to-bracket"></i> 로그인 / 회원가입
+                        </button>
+                    </div>
+
+                    <!-- User Info (Hidden by Default) -->
+                    <div id="user-info" style="display: none; align-items: center; gap: 1rem;">
+                        <div style="text-align: right;">
+                            <span id="user-name-display"
+                                style="display: block; font-size: 0.9rem; font-weight: 600;">사장님</span>
+                            <span id="user-email"
+                                style="display: block; font-size: 0.75rem; color: var(--text-muted);">email@example.com</span>
+                        </div>
+                        <div class="avatar" style="background: rgba(99, 102, 241, 0.2); color: var(--primary);"><i
+                                class="fa-solid fa-user"></i></div>
+                        <button id="logout-btn" title="로그아웃"
+                            style="padding: 0.5rem; background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 6px; cursor: pointer; transition: all 0.3s;">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </button>
+                    </div>
+
                 </div>
             </header>
 
