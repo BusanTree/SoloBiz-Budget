@@ -40,6 +40,9 @@
                 <li data-target="fixed-expenses-view">
                     <i class="fa-solid fa-calendar-check"></i> <span data-i18n="nav_fixed">고정 지출</span>
                 </li>
+                <li data-target="contact-view">
+                    <i class="fa-solid fa-envelope"></i> <span data-i18n="nav_contact">문의하기</span>
+                </li>
                 <li data-target="settings-view">
                     <i class="fa-solid fa-gear"></i> <span data-i18n="nav_settings">설정</span>
                 </li>
@@ -261,6 +264,31 @@
                     <!-- Goal List Container -->
                     <div id="goals-list-container" class="goals-list-container">
                         <!-- JS populate goal cards -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW: CONTACT -->
+            <section id="contact-view" class="view-section hidden">
+                <div class="glass-panel settings-container">
+                    <div class="setting-group">
+                        <h2><i class="fa-solid fa-envelope"></i> <span data-i18n="contact_title">제휴/문의</span></h2>
+                        <p style="margin-bottom: 1.5rem; color: var(--text-muted);" data-i18n="contact_desc">
+                            궁금한 점이나 제휴 제안이 있으시면 아래 폼을 통해 연락주세요.
+                        </p>
+                        <form action="https://formspree.io/f/mvzzpqlq" method="POST">
+                            <div class="form-group">
+                                <label data-i18n="label_email">이메일</label>
+                                <input type="email" name="email" placeholder="example@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="label_message">문의 내용</label>
+                                <textarea name="message" rows="5"
+                                    style="width: 100%; background: rgba(15, 23, 42, 0.5); border: 1px solid var(--glass-border); border-radius: 8px; padding: 0.75rem; color: var(--text-main); outline: none;"
+                                    placeholder="내용을 입력해주세요." required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary" data-i18n="btn_send">보내기</button>
+                        </form>
                     </div>
                 </div>
             </section>

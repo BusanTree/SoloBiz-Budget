@@ -73,13 +73,20 @@ const translations = {
         label_budget: "예산",
         btn_dept_register: "부서 등록",
         placeholder_dept_name: "예: 마케팅팀",
-        used: "사용됨"
+        used: "사용됨",
+        nav_contact: "제휴/문의",
+        contact_title: "제휴 및 문의",
+        contact_desc: "궁금한 점이나 제휴 제안이 있으시면 아래 폼을 통해 연락주세요.",
+        label_email: "이메일",
+        label_message: "문의 내용",
+        btn_send: "보내기"
     },
     en: {
         nav_dashboard: "Dashboard",
         nav_transactions: "Transactions",
         nav_goals: "Goals",
         nav_fixed: "Fixed Expenses",
+        nav_contact: "Contact",
         nav_settings: "Settings",
         dashboard_title: "Dashboard",
         greeting_prefix: "Hello, ",
@@ -148,13 +155,19 @@ const translations = {
         label_budget: "Monthly Budget",
         btn_dept_register: "Register Dept",
         placeholder_dept_name: "Ex: Marketing",
-        used: "Used"
+        used: "Used",
+        contact_title: "Contact / Partnership",
+        contact_desc: "If you have any questions or partnership proposals, please contact us via the form below.",
+        label_email: "Email",
+        label_message: "Message",
+        btn_send: "Send"
     },
     ja: {
         nav_dashboard: "ダッシュボード",
         nav_transactions: "取引履歴",
         nav_goals: "目標設定",
         nav_fixed: "固定費",
+        nav_contact: "お問い合わせ",
         nav_settings: "設定",
         dashboard_title: "ダッシュボード",
         greeting_prefix: "こんにちは、",
@@ -223,13 +236,19 @@ const translations = {
         label_budget: "予算",
         btn_dept_register: "部署登録",
         placeholder_dept_name: "例：マーケティング",
-        used: "使用済み"
+        used: "使用済み",
+        contact_title: "お問い合わせ",
+        contact_desc: "ご質問や提携のご提案がございましたら、以下のフォームよりご連絡ください。",
+        label_email: "メールアドレス",
+        label_message: "お問い合わせ内容",
+        btn_send: "送信"
     },
     zh: {
         nav_dashboard: "仪表板",
         nav_transactions: "交易记录",
         nav_goals: "目标设定",
         nav_fixed: "固定支出",
+        nav_contact: "联系我们",
         nav_settings: "设置",
         dashboard_title: "仪表板",
         greeting_prefix: "你好，",
@@ -298,13 +317,19 @@ const translations = {
         label_budget: "预算",
         btn_dept_register: "注册部门",
         placeholder_dept_name: "例：市场部",
-        used: "已使用"
+        used: "已使用",
+        contact_title: "联系我们",
+        contact_desc: "如有任何疑问或合作建议，请通过以下表单联系我们。",
+        label_email: "电子邮件",
+        label_message: "留言内容",
+        btn_send: "发送"
     },
     es: {
         nav_dashboard: "Panel",
         nav_transactions: "Transacciones",
         nav_goals: "Metas",
         nav_fixed: "Gastos Fijos",
+        nav_contact: "Contacto",
         nav_settings: "Ajustes",
         dashboard_title: "Panel",
         greeting_prefix: "Hola, ",
@@ -373,13 +398,19 @@ const translations = {
         label_budget: "Presupuesto",
         btn_dept_register: "Registrar Dept",
         placeholder_dept_name: "Ej: Marketing",
-        used: "Usado"
+        used: "Usado",
+        contact_title: "Contacto",
+        contact_desc: "Si tiene alguna pregunta o propuesta de asociación, contáctenos a través del formulario a continuación.",
+        label_email: "Correo electrónico",
+        label_message: "Mensaje",
+        btn_send: "Enviar"
     },
     fr: {
         nav_dashboard: "Tableau de bord",
         nav_transactions: "Transactions",
         nav_goals: "Objectifs",
         nav_fixed: "Dépenses Fixes",
+        nav_contact: "Contact",
         nav_settings: "Paramètres",
         dashboard_title: "Tableau de bord",
         greeting_prefix: "Bonjour, ",
@@ -448,13 +479,19 @@ const translations = {
         label_budget: "Budget",
         btn_dept_register: "Enregistrer Dép",
         placeholder_dept_name: "Ex: Marketing",
-        used: "Utilisé"
+        used: "Utilisé",
+        contact_title: "Contact",
+        contact_desc: "Si vous avez des questions ou des propositions de partenariat, veuillez nous contacter via le formulaire ci-dessous.",
+        label_email: "Email",
+        label_message: "Message",
+        btn_send: "Envoyer"
     },
     de: {
         nav_dashboard: "Dashboard",
         nav_transactions: "Transaktionen",
         nav_goals: "Ziele",
         nav_fixed: "Fixkosten",
+        nav_contact: "Kontakt",
         nav_settings: "Einstellungen",
         dashboard_title: "Dashboard",
         greeting_prefix: "Hallo, ",
@@ -523,7 +560,12 @@ const translations = {
         label_budget: "Budget",
         btn_dept_register: "Abt. registrieren",
         placeholder_dept_name: "Bsp: Marketing",
-        used: "Verwendet"
+        used: "Verwendet",
+        contact_title: "Kontakt",
+        contact_desc: "Wenn Sie Fragen oder Partnerschaftsvorschläge haben, kontaktieren Sie uns bitte über das untenstehende Formular.",
+        label_email: "E-Mail",
+        label_message: "Nachricht",
+        btn_send: "Senden"
     }
 };
 
