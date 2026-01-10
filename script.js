@@ -1,3 +1,146 @@
+// ===== SUPABASE INITIALIZATION =====
+const SUPABASE_URL = 'https://cgfihyaroktousyuzptz.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNnZmloeWFyb2t0b3VzeXV6cHR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgwMzY1MzEsImV4cCI6MjA4MzYxMjUzMX0.o_7A-3IbO9C_K8df1EoSxAdUfZkQ3iOGVBNejUH2ekw';
+
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// Current user
+let currentUser = null;
+
+// Auth UI Helper Functions
+function showLogin() {
+    document.getElementById('login-form').style.display = 'block';
+    document.getElementById('signup-form').style.display = 'none';
+    document.getElementById('auth-loading').style.display = 'none';
+}
+
+function showSignup() {
+    document.getElementById('login-form').style.display = 'none';
+    document.getElementById('signup-form').style.display = 'block';
+    document.getElementById('auth-loading').style.display = 'none';
+}
+
+function showAuthLoading() {
+    document.getElementById('login-form').style.display = 'none';
+    document.getElementById('signup-form').style.display = 'none';
+    document.getElementById('auth-loading').style.display = 'block';
+}
+
+function hideAuthOverlay() {
+    document.getElementById('auth-overlay').style.display = 'none';
+}
+
+function showAuthOverlay() {
+    document.getElementById('auth-overlay').style.display = 'flex';
+    showLogin();
+}
+
+// Auth Functions
+async function handleSignup() {
+    const name = document.getElementById('signup-name').value;
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
+    const passwordConfirm = document.getElementById('signup-password-confirm').value;
+
+    if (password !== passwordConfirm) {
+        alert('비밀번호가 일치하지 않습니다.');
+        return;
+    }
+
+    if (password.length < 6) {
+        alert('비밀번호는 최소 6자 이상이어야 합니다.');
+        return;
+    }
+
+    showAuthLoading();
+
+    try {
+        const { data, error } = await supabase.auth.signUp({
+            email: email,
+            password: password,
+            options: {
+                data: {
+                    name: name
+                }
+            }
+        });
+
+        if (error) throw error;
+
+        alert('회원가입이 완료되었습니다! 이메일을 확인해주세요.');
+        showLogin();
+    } catch (error) {
+        console.error('Signup error:', error);
+        alert('회원가입 실패: ' + error.message);
+        showSignup();
+    }
+}
+
+async function handleLogin() {
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+
+    showAuthLoading();
+
+    try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password
+        });
+
+        if (error) throw error;
+
+        currentUser = data.user;
+        document.getElementById('user-email').textContent = currentUser.email;
+        hideAuthOverlay();
+
+        // Load user data
+        await loadUserData();
+    } catch (error) {
+        console.error('Login error:', error);
+        alert('로그인 실패: ' + error.message);
+        showLogin();
+    }
+}
+
+async function handleLogout() {
+    try {
+        const { error } = await supabase.auth.signOut();
+        if (error) throw error;
+
+        currentUser = null;
+        showAuthOverlay();
+
+        // Clear local data
+        transactions = [];
+        goals = [];
+        departments = [];
+    } catch (error) {
+        console.error('Logout error:', error);
+        alert('로그아웃 실패: ' + error.message);
+    }
+}
+
+// Check Auth State
+async function checkAuth() {
+    const { data: { session } } = await supabase.auth.getSession();
+
+    if (session) {
+        currentUser = session.user;
+        document.getElementById('user-email').textContent = currentUser.email;
+        hideAuthOverlay();
+        await loadUserData();
+    } else {
+        showAuthOverlay();
+    }
+}
+
+// Placeholder for loading user data (will implement data sync later)
+async function loadUserData() {
+    // For now, just load from localStorage
+    // We'll implement Supabase data sync in next step
+}
+
 // --- Translations ---
 const translations = {
     ko: {
@@ -1872,3 +2015,6 @@ function displayAnimalResult(animal, percentage) {
 
 // Start
 init();
+
+// Check authentication state
+checkAuth();

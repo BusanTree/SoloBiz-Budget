@@ -17,9 +17,104 @@
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1632746197125140"
         crossorigin="anonymous"></script>
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
+    <!-- Auth Overlay -->
+    <div id="auth-overlay"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); z-index: 9999; display: flex; align-items: center; justify-content: center;">
+        <div
+            style="background: rgba(30, 41, 59, 0.95); border: 1px solid var(--glass-border); border-radius: 24px; padding: 3rem; width: 90%; max-width: 450px; backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
+            <!-- Logo -->
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <i class="fa-solid fa-rocket" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                <h1
+                    style="font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, #6366f1, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;">
+                    SoloBiz</h1>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">스마트 예산 관리 도구</p>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login-form" style="display: block;">
+                <h2 style="margin-bottom: 1.5rem; font-size: 1.5rem; text-align: center;">로그인</h2>
+                <form id="login-form-element" onsubmit="return false;">
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label
+                            style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">이메일</label>
+                        <input type="email" id="login-email" required
+                            style="width: 100%; padding: 0.875rem; background: rgba(15, 23, 42, 0.5); border: 1px solid var(--glass-border); border-radius: 8px; color: var(--text-main); font-size: 1rem; outline: none; transition: all 0.3s;"
+                            placeholder="example@email.com">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label
+                            style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">비밀번호</label>
+                        <input type="password" id="login-password" required
+                            style="width: 100%; padding: 0.875rem; background: rgba(15, 23, 42, 0.5); border: 1px solid var(--glass-border); border-radius: 8px; color: var(--text-main); font-size: 1rem; outline: none; transition: all 0.3s;"
+                            placeholder="••••••••">
+                    </div>
+                    <button type="submit" onclick="handleLogin()" class="btn-primary"
+                        style="width: 100%; padding: 1rem; margin-bottom: 1rem;">로그인</button>
+                </form>
+                <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+                    계정이 없으신가요? <a href="#" onclick="showSignup(); return false;"
+                        style="color: var(--primary); text-decoration: none; font-weight: 600;">회원가입</a>
+                </p>
+            </div>
+
+            <!-- Signup Form -->
+            <div id="signup-form" style="display: none;">
+                <h2 style="margin-bottom: 1.5rem; font-size: 1.5rem; text-align: center;">회원가입</h2>
+                <form id="signup-form-element" onsubmit="return false;">
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label
+                            style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">이름</label>
+                        <input type="text" id="signup-name" required
+                            style="width: 100%; padding: 0.875rem; background: rgba(15, 23, 42, 0.5); border: 1px solid var(--glass-border); border-radius: 8px; color: var(--text-main); font-size: 1rem; outline: none; transition: all 0.3s;"
+                            placeholder="홍길동">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label
+                            style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">이메일</label>
+                        <input type="email" id="signup-email" required
+                            style="width: 100%; padding: 0.875rem; background: rgba(15, 23, 42, 0.5); border: 1px solid var(--glass-border); border-radius: 8px; color: var(--text-main); font-size: 1rem; outline: none; transition: all 0.3s;"
+                            placeholder="example@email.com">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label
+                            style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">비밀번호</label>
+                        <input type="password" id="signup-password" required minlength="6"
+                            style="width: 100%; padding: 0.875rem; background: rgba(15, 23, 42, 0.5); border: 1px solid var(--glass-border); border-radius: 8px; color: var(--text-main); font-size: 1rem; outline: none; transition: all 0.3s;"
+                            placeholder="최소 6자 이상">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label
+                            style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">비밀번호
+                            확인</label>
+                        <input type="password" id="signup-password-confirm" required minlength="6"
+                            style="width: 100%; padding: 0.875rem; background: rgba(15, 23, 42, 0.5); border: 1px solid var(--glass-border); border-radius: 8px; color: var(--text-main); font-size: 1rem; outline: none; transition: all 0.3s;"
+                            placeholder="비밀번호 재입력">
+                    </div>
+                    <button type="submit" onclick="handleSignup()" class="btn-primary"
+                        style="width: 100%; padding: 1rem; margin-bottom: 1rem;">가입하기</button>
+                </form>
+                <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+                    이미 계정이 있으신가요? <a href="#" onclick="showLogin(); return false;"
+                        style="color: var(--primary); text-decoration: none; font-weight: 600;">로그인</a>
+                </p>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="auth-loading" style="display: none; text-align: center; padding: 1rem;">
+                <div
+                    style="width: 40px; height: 40px; border: 4px solid var(--glass-border); border-top: 4px solid var(--primary); border-radius: 50%; margin: 0 auto; animation: spin 1s linear infinite;">
+                </div>
+                <p style="margin-top: 1rem; color: var(--text-muted);">처리 중...</p>
+            </div>
+        </div>
+    </div>
+
     <div class="app-container">
         <!-- Sidebar / Navigation -->
         <aside class="sidebar">
@@ -55,6 +150,23 @@
             </ul>
             <div class="sidebar-footer"
                 style="margin-top: auto; padding: 1rem; border-top: 1px solid var(--glass-border);">
+                <!-- User Info -->
+                <div id="user-info"
+                    style="margin-bottom: 1rem; padding: 0.75rem; background: rgba(99, 102, 241, 0.1); border-radius: 8px;">
+                    <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                        <i class="fa-solid fa-user-circle"
+                            style="font-size: 1.5rem; color: var(--primary); margin-right: 0.5rem;"></i>
+                        <div style="flex: 1; min-width: 0;">
+                            <div id="user-email"
+                                style="font-size: 0.85rem; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                Loading...</div>
+                        </div>
+                    </div>
+                    <button onclick="handleLogout()"
+                        style="width: 100%; padding: 0.5rem; background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s;">
+                        <i class="fa-solid fa-right-from-bracket"></i> 로그아웃
+                    </button>
+                </div>
                 <div style="font-size: 0.85rem; color: var(--text-muted);">
                     <div style="margin-bottom: 0.5rem;">
                         <a href="#" data-target="about-view"
