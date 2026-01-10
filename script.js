@@ -2116,6 +2116,20 @@ function setupNavigation() {
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             const targetId = link.dataset.target;
+
+            // --- GUEST ACCESS CONTROL ---
+            // List of views that require login
+            const protectedViews = ['departments-view', 'transactions-view', 'goals-view', 'fixed-expenses-view'];
+
+            if (!currentUser && protectedViews.includes(targetId)) {
+                // If not logged in and trying to access protected view
+                if (confirm('이 기능을 사용하려면 로그인이 필요합니다.\n로그인 하시겠습니까?')) {
+                    showAuthOverlay();
+                }
+                return; // Stop navigation
+            }
+            // -----------------------------
+
             if (targetId) switchSection(targetId);
         });
     });
