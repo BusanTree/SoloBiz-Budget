@@ -61,14 +61,31 @@ async function handleSignup() {
             options: {
                 data: {
                     name: name
-                }
+                },
+                emailRedirectTo: window.location.origin
             }
         });
 
         if (error) throw error;
 
-        alert('회원가입이 완료되었습니다! 이메일을 확인해주세요.');
-        showLogin();
+        // Auto login after signup
+        alert('회원가입이 완료되었습니다! 자동 로그인됩니다.');
+
+        // Try to login immediately
+        const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password
+        });
+
+        if (loginError) {
+            alert('회원가입은 완료되었으나 자동 로그인에 실패했습니다. 이메일을 확인하거나 다시 로그인해주세요.');
+            showLogin();
+        } else {
+            currentUser = loginData.user;
+            document.getElementById('user-email').textContent = currentUser.email;
+            hideAuthOverlay();
+            await loadUserData();
+        }
     } catch (error) {
         console.error('Signup error:', error);
         alert('회원가입 실패: ' + error.message);
