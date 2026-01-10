@@ -2070,6 +2070,67 @@ function init() {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', handleLogout);
     }
+
+    // Setup Sidebar Navigation
+    setupNavigation();
+}
+
+function setupNavigation() {
+    const navLinks = document.querySelectorAll('.nav-links li');
+    const sections = document.querySelectorAll('.view-section');
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.querySelector('.overlay'); // For mobile
+
+    // Also include footer usage links
+    const footerLinks = document.querySelectorAll('.sidebar-footer a[data-target]');
+
+    function switchSection(targetId) {
+        // Hide all sections
+        sections.forEach(section => {
+            section.classList.add('hidden');
+        });
+
+        // Show target section
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+            targetSection.classList.remove('hidden');
+        }
+
+        // Update active state in sidebar (main links)
+        navLinks.forEach(link => {
+            if (link.dataset.target === targetId) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
+        // Close mobile sidebar if needed
+        if (sidebar && sidebar.classList.contains('active')) {
+            sidebar.classList.remove('active');
+            if (overlay) overlay.classList.remove('active');
+        }
+    }
+
+    // Attach click events to nav links
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const targetId = link.dataset.target;
+            if (targetId) switchSection(targetId);
+        });
+    });
+
+    // Attach click events to footer links
+    footerLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.dataset.target;
+            if (targetId) switchSection(targetId);
+        });
+    });
+
+    // Handle initial active section if needed, or default to dashboard
+    // Default is usually dashboard, handled by HTML structure or CSS
 }
 
 // Expose functions to window for onclick handlers
