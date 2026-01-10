@@ -82,14 +82,7 @@ const translations = {
         btn_send: "보내기",
         nav_feedback: "피드백",
         feedback_title: "사용자 피드백",
-        feedback_desc: "서비스에 대한 의견을 자유롭게 남겨주세요.",
-        nav_animal_test: "동물상 테스트",
-        animal_test_title: "동물상 테스트",
-        animal_test_desc: "사진을 업로드하면 어떤 동물과 닮았는지 알려드립니다!",
-        animal_upload_text: "이미지를 클릭하거나 드래그하여 업로드",
-        animal_upload_hint: "JPG, PNG 파일",
-        animal_analyzing: "분석 중...",
-        animal_retry: "다시 테스트하기"
+        feedback_desc: "서비스에 대한 의견을 자유롭게 남겨주세요."
     },
     en: {
         nav_dashboard: "Dashboard",
@@ -173,14 +166,7 @@ const translations = {
         label_message: "Message",
         btn_send: "Send",
         feedback_title: "User Feedback",
-        feedback_desc: "Please leave your feedback about our service.",
-        nav_animal_test: "Animal Face Test",
-        animal_test_title: "Animal Face Test",
-        animal_test_desc: "Upload a photo to find out which animal you resemble!",
-        animal_upload_text: "Click or drag to upload an image",
-        animal_upload_hint: "JPG, PNG files",
-        animal_analyzing: "Analyzing...",
-        animal_retry: "Try Again"
+        feedback_desc: "Please leave your feedback about our service."
     },
     ja: {
         nav_dashboard: "ダッシュボード",
@@ -264,14 +250,7 @@ const translations = {
         label_message: "お問い合わせ内容",
         btn_send: "送信",
         feedback_title: "ユーザーフィードバック",
-        feedback_desc: "サービスに関するご意見をご自由にお書きください。",
-        nav_animal_test: "動物顔診断",
-        animal_test_title: "動物顔診断",
-        animal_test_desc: "写真をアップロードすると、どの動物に似ているかがわかります!",
-        animal_upload_text: "クリックまたはドラッグして画像をアップロード",
-        animal_upload_hint: "JPG、PNGファイル",
-        animal_analyzing: "分析中...",
-        animal_retry: "もう一度テスト"
+        feedback_desc: "サービスに関するご意見をご自由にお書きください。"
     },
     zh: {
         nav_dashboard: "仪表板",
@@ -355,14 +334,7 @@ const translations = {
         label_message: "留言内容",
         btn_send: "发送",
         feedback_title: "用户反馈",
-        feedback_desc: "请留下您对服务的宝贵意见。",
-        nav_animal_test: "动物脸测试",
-        animal_test_title: "动物脸测试",
-        animal_test_desc: "上传照片，看看你像哪种动物！",
-        animal_upload_text: "点击或拖动上传图片",
-        animal_upload_hint: "JPG、PNG文件",
-        animal_analyzing: "分析中...",
-        animal_retry: "再次测试"
+        feedback_desc: "请留下您对服务的宝贵意见。"
     },
     es: {
         nav_dashboard: "Panel",
@@ -446,14 +418,7 @@ const translations = {
         label_message: "Mensaje",
         btn_send: "Enviar",
         feedback_title: "Comentarios del Usuario",
-        feedback_desc: "No dude en dejar sus comentarios sobre el servicio.",
-        nav_animal_test: "Test de Cara Animal",
-        animal_test_title: "Test de Cara Animal",
-        animal_test_desc: "¡Sube una foto para descubrir a qué animal te pareces!",
-        animal_upload_text: "Haz clic o arrastra para subir imagen",
-        animal_upload_hint: "Archivos JPG, PNG",
-        animal_analyzing: "Analizando...",
-        animal_retry: "Intentar de nuevo"
+        feedback_desc: "No dude en dejar sus comentarios sobre el servicio."
     },
     fr: {
         nav_dashboard: "Tableau de bord",
@@ -537,14 +502,7 @@ const translations = {
         label_message: "Message",
         btn_send: "Envoyer",
         feedback_title: "Commentaires des Utilisateurs",
-        feedback_desc: "N'hésitez pas à laisser vos commentaires sur le service.",
-        nav_animal_test: "Test de Visage Animal",
-        animal_test_title: "Test de Visage Animal",
-        animal_test_desc: "Téléchargez une photo pour découvrir à quel animal vous ressemblez!",
-        animal_upload_text: "Cliquez ou glissez pour télécharger une image",
-        animal_upload_hint: "Fichiers JPG, PNG",
-        animal_analyzing: "Analyse en cours...",
-        animal_retry: "Réessayer"
+        feedback_desc: "N'hésitez pas à laisser vos commentaires sur le service."
     },
     de: {
         nav_dashboard: "Dashboard",
@@ -628,14 +586,7 @@ const translations = {
         label_message: "Nachricht",
         btn_send: "Senden",
         feedback_title: "Benutzer-Feedback",
-        feedback_desc: "Bitte hinterlassen Sie Ihr Feedback zu unserem Service.",
-        nav_animal_test: "Tiergesicht-Test",
-        animal_test_title: "Tiergesicht-Test",
-        animal_test_desc: "Laden Sie ein Foto hoch, um herauszufinden, welchem Tier Sie ähneln!",
-        animal_upload_text: "Klicken oder ziehen Sie, um ein Bild hochzuladen",
-        animal_upload_hint: "JPG, PNG-Dateien",
-        animal_analyzing: "Analysiere...",
-        animal_retry: "Erneut versuchen"
+        feedback_desc: "Bitte hinterlassen Sie Ihr Feedback zu unserem Service."
     }
 };
 
