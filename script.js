@@ -82,7 +82,14 @@ const translations = {
         btn_send: "보내기",
         nav_feedback: "피드백",
         feedback_title: "사용자 피드백",
-        feedback_desc: "서비스에 대한 의견을 자유롭게 남겨주세요."
+        feedback_desc: "서비스에 대한 의견을 자유롭게 남겨주세요.",
+        nav_animal_test: "동물상 테스트",
+        animal_test_title: "동물상 테스트",
+        animal_test_desc: "사진을 업로드하면 어떤 동물과 닮았는지 알려드립니다!",
+        animal_upload_text: "이미지를 클릭하거나 드래그하여 업로드",
+        animal_upload_hint: "JPG, PNG 파일",
+        animal_analyzing: "분석 중...",
+        animal_retry: "다시 테스트하기"
     },
     en: {
         nav_dashboard: "Dashboard",
@@ -166,7 +173,14 @@ const translations = {
         label_message: "Message",
         btn_send: "Send",
         feedback_title: "User Feedback",
-        feedback_desc: "Please leave your feedback about our service."
+        feedback_desc: "Please leave your feedback about our service.",
+        nav_animal_test: "Animal Face Test",
+        animal_test_title: "Animal Face Test",
+        animal_test_desc: "Upload a photo to find out which animal you resemble!",
+        animal_upload_text: "Click or drag to upload an image",
+        animal_upload_hint: "JPG, PNG files",
+        animal_analyzing: "Analyzing...",
+        animal_retry: "Try Again"
     },
     ja: {
         nav_dashboard: "ダッシュボード",
@@ -250,7 +264,14 @@ const translations = {
         label_message: "お問い合わせ内容",
         btn_send: "送信",
         feedback_title: "ユーザーフィードバック",
-        feedback_desc: "サービスに関するご意見をご自由にお書きください。"
+        feedback_desc: "サービスに関するご意見をご自由にお書きください。",
+        nav_animal_test: "動物顔診断",
+        animal_test_title: "動物顔診断",
+        animal_test_desc: "写真をアップロードすると、どの動物に似ているかがわかります!",
+        animal_upload_text: "クリックまたはドラッグして画像をアップロード",
+        animal_upload_hint: "JPG、PNGファイル",
+        animal_analyzing: "分析中...",
+        animal_retry: "もう一度テスト"
     },
     zh: {
         nav_dashboard: "仪表板",
@@ -334,7 +355,14 @@ const translations = {
         label_message: "留言内容",
         btn_send: "发送",
         feedback_title: "用户反馈",
-        feedback_desc: "请留下您对服务的宝贵意见。"
+        feedback_desc: "请留下您对服务的宝贵意见。",
+        nav_animal_test: "动物脸测试",
+        animal_test_title: "动物脸测试",
+        animal_test_desc: "上传照片，看看你像哪种动物！",
+        animal_upload_text: "点击或拖动上传图片",
+        animal_upload_hint: "JPG、PNG文件",
+        animal_analyzing: "分析中...",
+        animal_retry: "再次测试"
     },
     es: {
         nav_dashboard: "Panel",
@@ -418,7 +446,14 @@ const translations = {
         label_message: "Mensaje",
         btn_send: "Enviar",
         feedback_title: "Comentarios del Usuario",
-        feedback_desc: "No dude en dejar sus comentarios sobre el servicio."
+        feedback_desc: "No dude en dejar sus comentarios sobre el servicio.",
+        nav_animal_test: "Test de Cara Animal",
+        animal_test_title: "Test de Cara Animal",
+        animal_test_desc: "¡Sube una foto para descubrir a qué animal te pareces!",
+        animal_upload_text: "Haz clic o arrastra para subir imagen",
+        animal_upload_hint: "Archivos JPG, PNG",
+        animal_analyzing: "Analizando...",
+        animal_retry: "Intentar de nuevo"
     },
     fr: {
         nav_dashboard: "Tableau de bord",
@@ -502,7 +537,14 @@ const translations = {
         label_message: "Message",
         btn_send: "Envoyer",
         feedback_title: "Commentaires des Utilisateurs",
-        feedback_desc: "N'hésitez pas à laisser vos commentaires sur le service."
+        feedback_desc: "N'hésitez pas à laisser vos commentaires sur le service.",
+        nav_animal_test: "Test de Visage Animal",
+        animal_test_title: "Test de Visage Animal",
+        animal_test_desc: "Téléchargez une photo pour découvrir à quel animal vous ressemblez!",
+        animal_upload_text: "Cliquez ou glissez pour télécharger une image",
+        animal_upload_hint: "Fichiers JPG, PNG",
+        animal_analyzing: "Analyse en cours...",
+        animal_retry: "Réessayer"
     },
     de: {
         nav_dashboard: "Dashboard",
@@ -586,7 +628,14 @@ const translations = {
         label_message: "Nachricht",
         btn_send: "Senden",
         feedback_title: "Benutzer-Feedback",
-        feedback_desc: "Bitte hinterlassen Sie Ihr Feedback zu unserem Service."
+        feedback_desc: "Bitte hinterlassen Sie Ihr Feedback zu unserem Service.",
+        nav_animal_test: "Tiergesicht-Test",
+        animal_test_title: "Tiergesicht-Test",
+        animal_test_desc: "Laden Sie ein Foto hoch, um herauszufinden, welchem Tier Sie ähneln!",
+        animal_upload_text: "Klicken oder ziehen Sie, um ein Bild hochzuladen",
+        animal_upload_hint: "JPG, PNG-Dateien",
+        animal_analyzing: "Analysiere...",
+        animal_retry: "Erneut versuchen"
     }
 };
 
@@ -1616,6 +1665,217 @@ addTransactionForm.onsubmit = addTransaction; // Overwrite to ensure latest func
 if (addGoalForm) addGoalForm.onsubmit = addGoal;
 if (addFixedForm) addFixedForm.onsubmit = addFixedExpense;
 if (addDeptForm) addDeptForm.onsubmit = addDepartment;
+
+// ===== ANIMAL FACE TEST LOGIC =====
+const animalUploadArea = document.getElementById('animal-upload-area');
+const animalImageInput = document.getElementById('animal-image-input');
+const animalPreviewContainer = document.getElementById('animal-preview-container');
+const animalPreviewImage = document.getElementById('animal-preview-image');
+const animalLoading = document.getElementById('animal-loading');
+const animalResult = document.getElementById('animal-result');
+const animalRetryBtn = document.getElementById('animal-retry-btn');
+const animalCanvas = document.getElementById('animal-analysis-canvas');
+
+// Animal types database
+const animalTypes = [
+    {
+        name_ko: '여우상', name_en: 'Fox', name_ja: 'キツネ顔', name_zh: '狐狸脸', name_es: 'Cara de Zorro', name_fr: 'Visage de Renard', name_de: 'Fuchs',
+        emoji: '🦊',
+        desc_ko: '날카롭고 지적인 인상을 가지고 있어요! 영리하고 민첩한 여우처럼 재치있고 빠른 판단력을 가지고 있습니다.',
+        desc_en: 'Sharp and intelligent impression! Like a clever and agile fox, you have wit and quick judgment.',
+        desc_ja: '鋭くて知的な印象を持っています！賢くて機敏なキツネのように、機転が利き、判断が速いです。',
+        desc_zh: '锐利而睿智的印象！像聪明敏捷的狐狸一样，你机智且判断迅速。',
+        desc_es: '¡Impresión aguda e inteligente! Como un zorro inteligente y ágil, tienes ingenio y juicio rápido.',
+        desc_fr: 'Impression vive et intelligente ! Comme un renard intelligent et agile, vous avez de l\'esprit et un jugement rapide.',
+        desc_de: 'Scharfer und intelligenter Eindruck! Wie ein kluger und flinker Fuchs haben Sie Esprit und schnelles Urteilsvermögen.'
+    },
+    {
+        name_ko: '강아지상', name_en: 'Puppy', name_ja: '犬顔', name_zh: '小狗脸', name_es: 'Cara de Cachorro', name_fr: 'Visage de Chiot', name_de: 'Welpe',
+        emoji: '🐶',
+        desc_ko: '순수하고 귀여운 매력이 있어요! 강아지처럼 친근하고 활발한 에너지를 가지고 있습니다.',
+        desc_en: 'Pure and cute charm! Like a puppy, you have friendly and energetic vibes.',
+        desc_ja: '純粋でかわいい魅力があります！子犬のように親しみやすく活発なエネルギーを持っています。',
+        desc_zh: '纯真可爱的魅力！像小狗一样，你拥有友好和活力的气质。',
+        desc_es: '¡Encanto puro y lindo! Como un cachorro, tienes vibras amigables y enérgicas.',
+        desc_fr: 'Charme pur et mignon ! Comme un chiot, vous avez des vibrations amicales et énergiques.',
+        desc_de: 'Reiner und niedlicher Charme! Wie ein Welpe haben Sie freundliche und energiegeladene Schwingungen.'
+    },
+    {
+        name_ko: '고양이상', name_en: 'Cat', name_ja: '猫顔', name_zh: '猫脸', name_es: 'Cara de Gato', name_fr: 'Visage de Chat', name_de: 'Katze',
+        emoji: '🐱',
+        desc_ko: '도도하고 우아한 분위기를 가지고 있어요! 고양이처럼 독립적이고 신비로운 매력이 있습니다.',
+        desc_en: 'Elegant and graceful aura! Like a cat, you have independent and mysterious charm.',
+        desc_ja: '優雅で上品な雰囲気を持っています！猫のように独立的で神秘的な魅力があります。',
+        desc_zh: '优雅高贵的氛围！像猫一样，你有独立而神秘的魅力。',
+        desc_es: '¡Aura elegante y graciosa! Como un gato, tienes un encanto independiente y misterioso.',
+        desc_fr: 'Aura élégante et gracieuse ! Comme un chat, vous avez un charme indépendant et mystérieux.',
+        desc_de: 'Elegante und anmutige Ausstrahlung! Wie eine Katze haben Sie einen unabhängigen und geheimnisvollen Charme.'
+    },
+    {
+        name_ko: '토끼상', name_en: 'Rabbit', name_ja: 'ウサギ顔', name_zh: '兔子脸', name_es: 'Cara de Conejo', name_fr: 'Visage de Lapin', name_de: 'Kaninchen',
+        emoji: '🐰',
+        desc_ko: '사랑스럽고 온화한 인상이에요! 토끼처럼 부드럽고 다정한 성격을 가지고 있습니다.',
+        desc_en: 'Lovely and gentle impression! Like a rabbit, you have a soft and kind personality.',
+        desc_ja: '愛らしくて温和な印象です！ウサギのように柔らかくて優しい性格を持っています。',
+        desc_zh: '可爱温柔的印象！像兔子一样，你性格温柔善良。',
+        desc_es: '¡Impresión encantadora y gentil! Como un conejo, tienes una personalidad suave y amable.',
+        desc_fr: 'Impression charmante et douce ! Comme un lapin, vous avez une personnalité douce et gentille.',
+        desc_de: 'Lieblicher und sanfter Eindruck! Wie ein Kaninchen haben Sie eine weiche und freundliche Persönlichkeit.'
+    },
+    {
+        name_ko: '곰상', name_en: 'Bear', name_ja: '熊顔', name_zh: '熊脸', name_es: 'Cara de Oso', name_fr: 'Visage d\'Ours', name_de: 'Bär',
+        emoji: '🐻',
+        desc_ko: '든든하고 믿음직한 느낌이에요! 곰처럼 따뜻하고 포근한 안정감을 줍니다.',
+        desc_en: 'Reliable and trustworthy feeling! Like a bear, you give warm and cozy stability.',
+        desc_ja: '頼りになる信頼できる感じです！クマのように温かくて居心地の良い安定感を与えます。',
+        desc_zh: '可靠值得信赖的感觉！像熊一样，你给人温暖舒适的稳定感。',
+        desc_es: '¡Sensación confiable y de confianza! Como un oso, das estabilidad cálida y acogedora.',
+        desc_fr: 'Sensation fiable et digne de confiance ! Comme un ours, vous donnez une stabilité chaleureuse et confortable.',
+        desc_de: 'Zuverlässiges und vertrauenswürdiges Gefühl! Wie ein Bär geben Sie warme und gemütliche Stabilität.'
+    },
+    {
+        name_ko: '사슴상', name_en: 'Deer', name_ja: '鹿顔', name_zh: '鹿脸', name_es: 'Cara de Ciervo', name_fr: 'Visage de Cerf', name_de: 'Reh',
+        emoji: '🦌',
+        desc_ko: '맑고 청순한 이미지를 가지고 있어요! 사슴처럼 우아하고 섬세한 감성을 지녔습니다.',
+        desc_en: 'Clear and pure image! Like a deer, you have elegant and delicate sensibility.',
+        desc_ja: '清らかで清純なイメージを持っています！鹿のように優雅で繊細な感性を持っています。',
+        desc_zh: '清澈纯净的形象！像鹿一样，你有优雅细腻的感性。',
+        desc_es: '¡Imagen clara y pura! Como un ciervo, tienes una sensibilidad elegante y delicada.',
+        desc_fr: 'Image claire et pure ! Comme un cerf, vous avez une sensibilité élégante et délicate.',
+        desc_de: 'Klares und reines Bild! Wie ein Reh haben Sie eine elegante und zarte Sensibilität.'
+    }
+];
+
+// Upload area click handler
+if (animalUploadArea) {
+    animalUploadArea.addEventListener('click', () => {
+        animalImageInput.click();
+    });
+
+    // Drag and drop handlers
+    animalUploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        animalUploadArea.style.borderColor = 'var(--primary)';
+        animalUploadArea.style.background = 'rgba(99, 102, 241, 0.05)';
+    });
+
+    animalUploadArea.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        animalUploadArea.style.borderColor = 'var(--glass-border)';
+        animalUploadArea.style.background = 'transparent';
+    });
+
+    animalUploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        animalUploadArea.style.borderColor = 'var(--glass-border)';
+        animalUploadArea.style.background = 'transparent';
+
+        const file = e.dataTransfer.files[0];
+        if (file && file.type.startsWith('image/')) {
+            handleImageUpload(file);
+        }
+    });
+}
+
+// Image input change handler
+if (animalImageInput) {
+    animalImageInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            handleImageUpload(file);
+        }
+    });
+}
+
+// Retry button handler
+if (animalRetryBtn) {
+    animalRetryBtn.addEventListener('click', () => {
+        animalPreviewContainer.style.display = 'none';
+        animalResult.style.display = 'none';
+        animalUploadArea.style.display = 'block';
+        animalImageInput.value = '';
+    });
+}
+
+// Handle image upload
+function handleImageUpload(file) {
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+        animalPreviewImage.src = e.target.result;
+        animalUploadArea.style.display = 'none';
+        animalPreviewContainer.style.display = 'block';
+        animalLoading.style.display = 'block';
+        animalResult.style.display = 'none';
+
+        // Simulate analysis delay
+        setTimeout(() => {
+            analyzeImage(e.target.result);
+        }, 2000);
+    };
+
+    reader.readAsDataURL(file);
+}
+
+// Analyze image and determine animal type
+function analyzeImage(imageSrc) {
+    const img = new Image();
+    img.onload = () => {
+        // Draw image to canvas for analysis
+        const ctx = animalCanvas.getContext('2d');
+        animalCanvas.width = img.width;
+        animalCanvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+
+        // Get image data
+        const imageData = ctx.getImageData(0, 0, img.width, img.height);
+        const data = imageData.data;
+
+        // Calculate average color values
+        let r = 0, g = 0, b = 0;
+        let brightness = 0;
+        const sampleSize = Math.min(10000, data.length / 4); // Sample pixels
+        const step = Math.floor(data.length / 4 / sampleSize);
+
+        for (let i = 0; i < data.length; i += step * 4) {
+            r += data[i];
+            g += data[i + 1];
+            b += data[i + 2];
+            brightness += (data[i] + data[i + 1] + data[i + 2]) / 3;
+        }
+
+        r = Math.floor(r / sampleSize);
+        g = Math.floor(g / sampleSize);
+        b = Math.floor(b / sampleSize);
+        brightness = Math.floor(brightness / sampleSize);
+
+        // Determine animal based on color analysis
+        let animalIndex = 0;
+        const hash = (r * 7 + g * 13 + b * 19 + brightness * 3) % animalTypes.length;
+        animalIndex = hash;
+
+        // Calculate percentage (80-99%)
+        const percentage = 80 + Math.floor(Math.random() * 20);
+
+        // Display result
+        displayAnimalResult(animalTypes[animalIndex], percentage);
+    };
+    img.src = imageSrc;
+}
+
+// Display animal result
+function displayAnimalResult(animal, percentage) {
+    animalLoading.style.display = 'none';
+    animalResult.style.display = 'block';
+
+    const langKey = `name_${currentLang}`;
+    const descKey = `desc_${currentLang}`;
+
+    document.getElementById('animal-emoji').textContent = animal.emoji;
+    document.getElementById('animal-type').textContent = animal[langKey] || animal.name_ko;
+    document.getElementById('animal-percentage').textContent = `${percentage}% ${translations[currentLang]?.achieved || '일치'}`.replace('%', '');
+    document.getElementById('animal-description').textContent = animal[descKey] || animal.desc_ko;
+}
 
 // Start
 init();
