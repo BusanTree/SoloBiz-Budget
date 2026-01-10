@@ -2034,7 +2034,20 @@ function displayAnimalResult(animal, percentage) {
 function init() {
     // Placeholder for initialization
     console.log('App initialized');
+
+    // Attach event listeners
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', handleLogout);
+    }
 }
+
+// Expose functions to window for onclick handlers
+window.showLogin = showLogin;
+window.showSignup = showSignup;
+window.handleLogin = handleLogin;
+window.handleSignup = handleSignup;
+window.handleLogout = handleLogout;
 
 // Start
 init();
