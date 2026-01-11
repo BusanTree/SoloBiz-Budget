@@ -134,6 +134,14 @@ async function handleLogout() {
     }
 }
 
+function toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.querySelector('.overlay');
+    if (sidebar) sidebar.classList.toggle('active');
+    if (overlay) overlay.classList.toggle('active');
+}
+window.toggleSidebar = toggleSidebar;
+
 // Check Auth State
 async function checkAuth() {
     try {

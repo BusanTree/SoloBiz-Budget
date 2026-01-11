@@ -500,6 +500,7 @@ body {
 }
 
 /* Responsive */
+/* Responsive */
 @media (max-width: 1024px) {
     .dashboard-grid {
         grid-template-columns: 1fr;
@@ -513,21 +514,62 @@ body {
 @media (max-width: 768px) {
     .app-container {
         flex-direction: column;
-        overflow-y: auto;
     }
 
+    /* Sidebar Mobile Transformation */
     .sidebar {
-        width: 100%;
-        padding: 1rem;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        border-right: none;
-        border-bottom: 1px solid var(--glass-border);
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100%;
+        z-index: 1000;
+        transition: left 0.3s ease-in-out;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
     }
 
-    .nav-links {
-        display: none;
-        /* Mobile menu can be added later */
+    .sidebar.active {
+        left: 0;
+    }
+
+    /* Show hamburger menu */
+    .mobile-menu-btn {
+        display: block !important;
+    }
+
+    /* Overlay styles */
+    .overlay.active {
+        display: block !important;
+    }
+
+    /* Layout adjustments */
+    .main-content {
+        padding: 1rem;
+        width: 100%;
+    }
+
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .top-bar {
+        margin-bottom: 1.5rem;
+    }
+
+    .top-bar h1 {
+        font-size: 1.25rem;
+    }
+
+    /* Hide user info text on very small screens if needed */
+    @media (max-width: 480px) {
+
+        #user-name-display,
+        #user-email {
+            display: none !important;
+        }
+
+        .user-profile {
+            gap: 0.5rem;
+        }
     }
 }
