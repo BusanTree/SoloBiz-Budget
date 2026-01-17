@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://busantree.github.io/SoloBiz-Budget/sitemap.xml
+Sitemap: https://solobiz-budget.pages.dev/sitemap.xml
