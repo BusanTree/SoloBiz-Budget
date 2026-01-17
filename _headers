@@ -1,7 +1,7 @@
-/sitemap.xml
+/sitemap_v2.xml
   Content-Type: application/xml
   X-Content-Type-Options: nosniff
-  Cache-Control: public, max-age=3600
+  Cache-Control: public, max-age=0, no-transform
 
 /robots.txt
   Content-Type: text/plain
